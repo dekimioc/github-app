@@ -5,7 +5,7 @@ import {cleadErrors} from '../../redux/actions/users-actions'
 import close from '../../assets/imgs/close.png'
 import PropTypes from 'prop-types'
 
-const ErrorModal = ({ errorText, errorDetails }) => {
+const ErrorModal = ({ errorText, errorDetails, showCloseButton }) => {
 
     const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ const ErrorModal = ({ errorText, errorDetails }) => {
     }
   return (
     <div className="error-message-container">
-        <span className="close-modal" onClick={cleanErrorsHandler}><img src={close}/></span>
+        {showCloseButton ? <span className="close-modal" onClick={cleanErrorsHandler}><img src={close}/></span> : null}
         <h1 className="color-error">{errorText}</h1>
         <p className="color-error">{errorDetails}</p>
     </div>

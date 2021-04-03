@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {loaderHandler} from '../../redux/actions/repository-actions'
+import {loaderHandler, cleanErrors} from '../../redux/actions/repository-actions'
 import Layout from '../../components/Layout/Layout'
 import SearchForm from '../../components/SearchForm/SearchForm'
 import UserCard from '../../components/UserCard/UserCard'
@@ -16,6 +16,7 @@ const HomePage = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(loaderHandler())
+        dispatch(cleanErrors())
     }, [dispatch])
     return(
         <div>
@@ -25,7 +26,7 @@ const HomePage = () => {
             {!loadingUsersState ? <div className="row">
                     {usersData && usersData.length !== 0 ? usersData.map(e => <UserCard key={e.id} avatar={e.avatar_url} loginName={e.login}/>) : ""}
                 </div> : <Loader />}
-        </> : <ErrorModal errorText={errorMessage} errorDetails={errorDetailsMessage}/>}
+        </> : <ErrorModal showCloseButton={true} errorText={errorMessage} errorDetails={errorDetailsMessage}/>}
             </Layout>
         </div>
     )

@@ -28,7 +28,6 @@ export const getUsers = () => async (dispatch, getState) => {
         }
     }
     catch(error){
-        console.log(error.message)
         dispatch( {
             type: USERS_ERROR,
             payload: error,

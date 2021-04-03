@@ -1,5 +1,5 @@
 
-import {USERS_REPOS, CURRENT_USER, IS_LOADED} from '../types'
+import {USERS_REPOS, CURRENT_USER, IS_LOADED, USERS_ERROR, CLEAN_ERRORS} from '../types'
 import axios from 'axios'
 
 export const getCurrentUser = name => {
@@ -16,6 +16,13 @@ export const loaderHandler = action => {
   };
 }
 
+export const cleanErrors = action => {
+     return {
+        type: CLEAN_ERRORS,
+        action: action
+  };
+}
+
 export const getUsersRepos = () => async (dispatch, getState) => {
     try{
         const res = await axios.get(`${process.env.REACT_APP_REPOS}/${getState().repos.currentUser}/repos`)
@@ -26,9 +33,9 @@ export const getUsersRepos = () => async (dispatch, getState) => {
         })
     }
     catch(error){
-        // dispatch( {
-        //     type: USERS_ERROR,
-        //     payload: error,
-        // })
+        dispatch( {
+            type: USERS_ERROR,
+            payload: error,
+        })
     }
 }
