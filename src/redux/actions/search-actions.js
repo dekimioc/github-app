@@ -4,5 +4,5 @@ export const searchHandler = e => {
   return {
     type: SEARCH_HANDLER,
     e: e
-  };
-};
+  }
+}

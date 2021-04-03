@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
-import Layout from '../../components/Layout/Layout';
-import SearchForm from '../../components/SearchForm/SearchForm';
-import { useSelector} from 'react-redux'
-import UserCard from '../../components/UserCard/UserCard';
+import React, { useEffect, useState } from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {loaderHandler} from '../../redux/actions/repository-actions'
+import Layout from '../../components/Layout/Layout'
+import SearchForm from '../../components/SearchForm/SearchForm'
+import UserCard from '../../components/UserCard/UserCard'
+import Loader from '../../components/Loader/Loader'
+import ErrorModal from '../../components/ErrorModal/ErrorModal'
 
 const HomePage = () => {
     const usersData = useSelector(state => state.usersList.users)
+    const loadingUsersState = useSelector(state => state.usersList.loading)
+    const errorMessage = useSelector(state => state.usersList.usersError)
+    const errorDetailsMessage = useSelector(state => state.usersList.usersDetailsError)
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(loaderHandler())
+    }, [dispatch])
     return(
         <div>
             <Layout>
+        {!errorMessage && errorMessage.length === 0 ? <>
             <SearchForm />
-            <h2>Results for: </h2>
-                <div className="row">
-                    {usersData.length > 0 ? usersData.map(e => <UserCard key={e.id} avatar={e.avatar_url} loginName={e.login}/>) : null}
-                </div>
+            {!loadingUsersState ? <div className="row">
+                    {usersData && usersData.length !== 0 ? usersData.map(e => <UserCard key={e.id} avatar={e.avatar_url} loginName={e.login}/>) : ""}
+                </div> : <Loader />}
+        </> : <ErrorModal errorText={errorMessage} errorDetails={errorDetailsMessage}/>}
             </Layout>
         </div>
     )

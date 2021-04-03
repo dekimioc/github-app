@@ -1,4 +1,8 @@
 export const GET_USERS = 'GET_USERS'
+export const LOADING_USERS = 'LOADING_USERS'
 export const USERS_ERROR = 'USERS_ERROR'
+export const CLEAN_ERRORS = 'CLEAN_ERRORS'
 export const SEARCH_HANDLER = 'SEARCH_HANDLER'
 export const USERS_REPOS ='USERS_REPOS'
+export const CURRENT_USER = 'CURRENT_USER'
+export const IS_LOADED = 'IS_LOADED'

@@ -1,8 +1,13 @@
-import React from 'react';
+import React from 'react'
+import './Layout.scss'
 
 const Layout = (props) => {
     return(
-        <div className="container">{props.children}</div>
+        <div className="container">
+            <div className="row">
+                {props.children}
+            </div>
+        </div>
     )
 };
 

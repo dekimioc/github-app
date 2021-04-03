@@ -1,0 +1,23 @@
+.button-custom {
+    button {
+        position: fixed;
+        right: 2rem;
+        bottom: 2rem;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: -1px -3px 14px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: -1px -3px 14px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px -3px 14px 0px rgba(0,0,0,0.75);
+        background-color: #fff;
+        border: 1px solid #000;
+        transition: all .3s ease-in-out;
+            &:hover {
+        background-color: #000;
+        border: 2px solid #fff; 
+        color: #fff
+            }
+        .back-image {
+            width: 35px;
+        }
+    }
+}

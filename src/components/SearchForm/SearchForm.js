@@ -2,6 +2,7 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getUsers} from '../../redux/actions/users-actions'
 import {searchHandler} from '../../redux/actions/search-actions'
+import './SearchForm.scss'
 
 
 const SearchForm = () => {
@@ -19,9 +20,9 @@ const SearchForm = () => {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Search Users" value={searchValue} onChange={e => handleChange(e)} />
-            <input type="submit" />
+        <form className="col-12 mb-5 pt-5 mt-5 text-center" onSubmit={handleSubmit}>
+            <input type="text" className="search-input" placeholder="Search Users" value={searchValue} onChange={e => handleChange(e)} />
+            <input type="submit" disabled={searchValue.length === 0} className="submit-button" />
         </form>
     )
 };

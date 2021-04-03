@@ -1,7 +1,9 @@
-import {USERS_REPOS} from '../types'
+import {USERS_REPOS, CURRENT_USER, IS_LOADED} from '../types'
 
 const initialState = {
-    repos: []
+    repos: [],
+    currentUser: '',
+    loaded: false
 }
 
 export const repositoryReducer = (state = initialState, action) => {
@@ -9,8 +11,19 @@ export const repositoryReducer = (state = initialState, action) => {
         case USERS_REPOS:
             return {
                 ...state,
-                repos: action.e
+                repos: action.payload,
+                loaded: true
             }
+        case CURRENT_USER:
+            return {
+                ...state,
+                currentUser: action.name
+            }
+        case IS_LOADED:
+            return {
+            ...state,
+            loaded: false
+        }
         default: return state
     }
 }

@@ -1,0 +1,15 @@
+.link {
+    transition: all .4s ease-in-out;
+    text-decoration: none !important;
+    &:hover {
+        text-decoration: none !important;
+    }
+.user-card {
+    img {
+        max-width: 100%;
+    }
+    h4 {
+        color: #000;
+    }
+}
+}
