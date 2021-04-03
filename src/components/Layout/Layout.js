@@ -1,5 +1,6 @@
 import React from 'react'
 import './Layout.scss'
+import PropTypes from 'prop-types'
 
 const Layout = (props) => {
     return(
@@ -9,6 +10,10 @@ const Layout = (props) => {
             </div>
         </div>
     )
-};
+}
+
+Layout.propTypes = {
+    props: PropTypes.object
+}
 
 export default Layout;

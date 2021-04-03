@@ -14,7 +14,7 @@ const ErrorModal = ({ errorText, errorDetails, showCloseButton }) => {
     }
   return (
     <div className="error-message-container">
-        {showCloseButton ? <span className="close-modal" onClick={cleanErrorsHandler}><img src={close}/></span> : null}
+        {showCloseButton ? <span className="close-modal" onClick={cleanErrorsHandler}><img alt="close" src={close}/></span> : false}
         <h1 className="color-error">{errorText}</h1>
         <p className="color-error">{errorDetails}</p>
     </div>
@@ -22,7 +22,9 @@ const ErrorModal = ({ errorText, errorDetails, showCloseButton }) => {
 }
 
 ErrorModal.propTypes = {
-  errorText: PropTypes.string.isRequired
+  errorText: PropTypes.string.isRequired,
+  errorDetails: PropTypes.string.isRequired,
+  showCloseButton: PropTypes.bool.isRequired
 }
 
 export default ErrorModal
