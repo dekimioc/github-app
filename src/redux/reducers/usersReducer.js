@@ -1,10 +1,11 @@
-import {GET_USERS, USERS_ERROR, LOADING_USERS, CLEAN_ERRORS} from '../types'
+import {GET_USERS, USERS_ERROR, LOADING_USERS, CLEAN_ERRORS, SEARCHED_USERS} from '../types'
 
 const initialState = {
     users:[],
     loading: false,
     usersError: '',
-    usersDetailsError: ''
+    usersDetailsError: '',
+    searchedUsers: false
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -33,6 +34,11 @@ export const usersReducer = (state = initialState, action) => {
                 usersError: '',
                 usersDetailsError: ''
             }
+        case SEARCHED_USERS:
+            return {
+            ...state,
+            searchedUsers: true
+        }
         default: return state
     }
 

@@ -18,9 +18,9 @@ const RepositoryPage = ({match}) => {
     let history = useHistory();
 
     useEffect(() => {
-        dispatch(getCurrentUser(match.params.name))
-        dispatch(getUsersRepos())
-      }, [dispatch])
+        dispatch(getCurrentUser(match.params.name)) 
+        dispatch(getUsersRepos())   
+      },[match.params.name, dispatch])
 
     return(
             <Layout>
@@ -30,7 +30,7 @@ const RepositoryPage = ({match}) => {
                         {usersRepos.length !== 0 ? usersRepos.map(e => <RepoCard key={e.id} name={e.full_name} desc={e.description} created={e.created_at} star={e.stargazers_count} forks={e.forks_count} licence={e.license ? e.license.name : "/"} link={e.html_url} watchers={e.watchers}/>) : <h1 className="text-center mb-5 mt-5 ">This User Has No Repos!</h1>}
                         <ButtonElement text="Back To Search Page" action={history.goBack}/>
                         </> : <Loader />}
-                </> : <><ErrorModal errorText={errorMessage} errorDetails={errorDetailsMessage}/><ButtonElement showCloseButton={false} text="Back To Search Page" action={history.goBack}/></>}
+                </> : <><ErrorModal showCloseButton={false} errorText={errorMessage} errorDetails={errorDetailsMessage}/><ButtonElement text="Back To Search Page" action={history.goBack}/></>}
             </Layout>
         
     )

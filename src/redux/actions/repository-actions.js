@@ -26,6 +26,7 @@ export const cleanErrors = action => {
 export const getUsersRepos = () => async (dispatch, getState) => {
     try{
         const res = await axios.get(`${process.env.REACT_APP_REPOS}/${getState().repos.currentUser}/repos`)
+        console.log('a')
         dispatch( {
             type: USERS_REPOS,
             payload: res.data
