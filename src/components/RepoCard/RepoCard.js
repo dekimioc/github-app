@@ -7,7 +7,7 @@ const RepoCard = ({name, desc, created, star, forks, licence, link, watchers}) =
         <a href={link} target="_blank" rel="noreferrer" className="col-md-6 text-center repo-card">
             <div className="repo-card-inner-container">
                 <p>Name: {name}</p>
-                <p>Desc: {desc ? desc : "/"}</p>
+                <p>Desc: {desc ? desc.substring(0, 120) + "..." : "/"}</p>
                 <p>Created: {created}</p>
                 <p>Stargazers: {star}</p>
                 <p>Forks: {forks}</p>
